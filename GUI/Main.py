@@ -64,12 +64,24 @@ E5.pack(side = tkinter.BOTTOM)
 
 #Update Function
 def update():
-    nRows = int(E1.get())
-    pitch = float(E2.get())
-    rFuel = float(E3.get())
-    rGap  = float(E4.get())
-    rClad = float(E5.get())
     global Assembly
+    global nRows
+    global pitch
+    global rFuel
+    global rGap
+    global rClad
+
+    if E1.get():
+        nRows = int(E1.get())
+    if E2.get():
+        pitch = float(E2.get())
+    if E3.get():
+        rFuel = float(E3.get())
+    if E4.get():
+        rGap  = float(E4.get())
+    if E5.get():
+        rClad = float(E5.get())
+
     Assembly.pack_forget()
     Assembly = drawAssembly(leftframe, nRows, pitch, rFuel, rGap, rClad)
     Assembly.pack(side=tkinter.TOP)
