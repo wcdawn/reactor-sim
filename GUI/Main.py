@@ -1,11 +1,27 @@
-import tkinter
+from tkinter import *
+from ttk import *
 from Assembly import drawAssembly
 
-top = tkinter.Tk()
-top.title('Rx Creator')
-top.geometry('800x500')
+root = Tk()
+root.title('Rx Creator')
+#root.geometry('800x500')
 
-#Example values
+master = Frame(root, name='master') # create Frame in "root"
+master.pack(fill=BOTH) # fill both sides of the parent
+
+nb = Notebook(master, name='nb')
+nb.pack(fill=BOTH, padx=2, pady=3)
+
+CoreFrame = Frame(master, name="core-frame")
+CoreFrame.pack()
+nb.add(CoreFrame, text="Core")
+
+AssemblyFrame = Frame(nb, name="assembly-frame")
+AssemblyFrame.pack()
+nb.add(AssemblyFrame, text="Assembly")
+
+
+#Example values for assembly
 nRows = 15
 pitch = 25
 rFuel = 5
@@ -13,54 +29,54 @@ rGap = 7
 rClad = 10
 
 #Left Frame
-leftframe  = tkinter.Frame(top)
-leftframe.pack( side=tkinter.LEFT)
+leftframe = Frame(AssemblyFrame)
+leftframe.pack(side=LEFT)
 Assembly = drawAssembly(leftframe, nRows, pitch, rFuel, rGap, rClad)
-Assembly.pack(side=tkinter.TOP)
+Assembly.pack(side=TOP)
 
 #Right Frame
-rightframe = tkinter.Frame(top)
-rightframe.pack( side=tkinter.RIGHT )
+rightframe = Frame(AssemblyFrame)
+rightframe.pack(side=RIGHT)
 
 #Entry 1 Frame
-entry1frame = tkinter.Frame(rightframe)
-entry1frame.pack( side=tkinter.TOP)
-L1 = tkinter.Label(entry1frame, text="Number of Pins Per Row")
-L1.pack( side = tkinter.TOP)
-E1 = tkinter.Entry(entry1frame)
-E1.pack(side = tkinter.BOTTOM)
+entry1frame = Frame(rightframe)
+entry1frame.pack( side=TOP)
+L1 = Label(entry1frame, text="Number of Pins Per Row")
+L1.pack( side = TOP)
+E1 = Entry(entry1frame)
+E1.pack(side = BOTTOM)
 
 #Entry 2 Frame
-entry2frame = tkinter.Frame(rightframe)
-entry2frame.pack( side=tkinter.TOP)
-L2 = tkinter.Label(entry2frame, text="Fuel Pin Pitch")
-L2.pack( side = tkinter.TOP)
-E2 = tkinter.Entry(entry2frame)
-E2.pack(side = tkinter.BOTTOM)
+entry2frame = Frame(rightframe)
+entry2frame.pack( side=TOP)
+L2 = Label(entry2frame, text="Fuel Pin Pitch")
+L2.pack( side = TOP)
+E2 = Entry(entry2frame)
+E2.pack(side = BOTTOM)
 
 #Entry 3 Frame
-entry3frame = tkinter.Frame(rightframe)
-entry3frame.pack( side=tkinter.TOP)
-L3 = tkinter.Label(entry3frame, text="Fuel Pin Radius")
-L3.pack( side = tkinter.TOP)
-E3 = tkinter.Entry(entry3frame)
-E3.pack(side = tkinter.BOTTOM)
+entry3frame = Frame(rightframe)
+entry3frame.pack( side=TOP)
+L3 = Label(entry3frame, text="Fuel Pin Radius")
+L3.pack( side = TOP)
+E3 = Entry(entry3frame)
+E3.pack(side = BOTTOM)
 
 #Entry 4 Frame
-entry4frame = tkinter.Frame(rightframe)
-entry4frame.pack( side=tkinter.TOP)
-L4 = tkinter.Label(entry4frame, text="Gap Radius")
-L4.pack( side = tkinter.TOP)
-E4 = tkinter.Entry(entry4frame)
-E4.pack(side = tkinter.BOTTOM)
+entry4frame = Frame(rightframe)
+entry4frame.pack( side=TOP)
+L4 = Label(entry4frame, text="Gap Radius")
+L4.pack( side = TOP)
+E4 = Entry(entry4frame)
+E4.pack(side = BOTTOM)
 
 #Entry 5 Frame
-entry5frame = tkinter.Frame(rightframe)
-entry5frame.pack( side=tkinter.TOP)
-L5 = tkinter.Label(entry5frame, text="Cladding Radius")
-L5.pack( side = tkinter.TOP)
-E5 = tkinter.Entry(entry5frame)
-E5.pack(side = tkinter.BOTTOM)
+entry5frame = Frame(rightframe)
+entry5frame.pack( side=TOP)
+L5 = Label(entry5frame, text="Cladding Radius")
+L5.pack( side = TOP)
+E5 = Entry(entry5frame)
+E5.pack(side = BOTTOM)
 
 #Update Function
 def update():
@@ -84,13 +100,13 @@ def update():
 
     Assembly.pack_forget()
     Assembly = drawAssembly(leftframe, nRows, pitch, rFuel, rGap, rClad)
-    Assembly.pack(side=tkinter.TOP)
+    Assembly.pack(side=TOP)
 
 #Button Frame
-buttonframe = tkinter.Frame(rightframe)
-buttonframe.pack(side=tkinter.TOP)
-B = tkinter.Button(buttonframe, text="OK", command=update)
+buttonframe = Frame(rightframe)
+buttonframe.pack(side=TOP)
+B = Button(buttonframe, text="OK", command=update)
 B.pack()
 
 
-top.mainloop()
+root.mainloop()
