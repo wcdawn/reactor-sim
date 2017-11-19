@@ -192,15 +192,21 @@ For $\gamma_k>90$, the first ray's start point is determined by the following eq
 \label{eq:gt90first}
 \end{equation}
 
-After the first ray start points are properly determined by equations \ref{eq:lt90first} or \ref{eq:gt90first}, the next ray begins at the point $(x_s,y_s) = (x_s^1,y_s^1-\frac{s}{2})$. 
+After the first ray start points are properly determined by equations \ref{eq:lt90first} or \ref{eq:gt90first}, the next ray begins at the point $(x_s,y_s) = (x_s^1,y_s^1-s)$. 
 This trend is continued with starting locations, until eventually $y_s<0$.
 At this point the locations must now start from the bottom of the domain, $y_s=0$. 
 However, the orthogonal spacing $h$ between each characteristic MUST BE PRESERVED!
 In order to achieve this spacing, the first ray started along the bottom edge of the domain must be spaced from the side that the previous ray was started at by the special spacing $\tilde{s}$.
-Where $y_s^f$ is the $y$ value of the final starting point on either the left or right side
+Where $y_s^f$ is the $y$ value of the final starting point on either the left or right side. For curves starting on the left side:
 \begin{equation}
-\tilde{s}=\sqrt{h^2-(y_s^f)^2}
+\tilde{s}=\frac{s-y_s^f}{\tan(\gamma)}
 \label{eq:firstbotspace}
+\end{equation}
+
+For curves starting on the right side:
+\begin{equation}
+\tilde{s}=\frac{s-y_s^f}{\tan(180-\gamma)}
+\label{eq:secondbotspace}
 \end{equation}
 
 The actual definition of the characteristic curve for a given start point $(x_s,y_s)\in \delta A$ and angle $(\gamma_k,\theta_k,\omega_k)$ is the set of points $(x,y)\in A$ along 
